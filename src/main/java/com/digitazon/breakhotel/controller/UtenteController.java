@@ -38,7 +38,7 @@ public class UtenteController {
         return new ResponseEntity<>(utenteService.findByID(id), HttpStatus.OK);
     }
 
-    @DeleteMapping("/delete/{appID}")
+    @DeleteMapping("/delete/{uteID}")
     public ResponseEntity<String> deleteUtenteById(@PathVariable Long uteID) {
         log.info("chiamata al findAllUtente");
         utenteService.deleteByID(uteID);
