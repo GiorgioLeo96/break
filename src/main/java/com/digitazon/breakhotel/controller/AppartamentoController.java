@@ -31,27 +31,22 @@ public class AppartamentoController {
     AppartamentoService appartamentoService;
 
     @GetMapping("/all")
-    public ResponseEntity<List<Appartamento>> findAllAppartamento() {
+    public ResponseEntity<List<Appartamento>> findAllAppartamento(
+            @RequestParam(name = "regione", required = false) String regione,
+            @RequestParam(name = "citta", required = false) String citta) {
         log.info("chiamata al findAllAppartamenti");
+
+        if (regione != null || citta != null) {
+            return new ResponseEntity<>(appartamentoService.getAppartamentoByRegioneAndCitta(regione, citta),
+                    HttpStatus.OK);
+        }
+
         return new ResponseEntity<>(appartamentoService.findAll(), HttpStatus.OK);
     }
 
-    @GetMapping("/regione/{regione}")
-    public ResponseEntity<Appartamento> getAppartamentoByRegione(@PathVariable String regione) {
-        return new ResponseEntity<>(appartamentoService.getAppartamentoByRegione(regione), HttpStatus.OK);
-    }
-
-    @GetMapping("/citta/{citta}")
-    public ResponseEntity<Appartamento> getAppartamentoByCitta(@PathVariable String citta) {
-        return new ResponseEntity<>(appartamentoService.getAppartamentoByCitta(citta), HttpStatus.OK);
-    }
-
-    @GetMapping("/specifica")
-    public ResponseEntity<List<Appartamento>> getAppartamentoByRegioneAndCitta(
-            @RequestParam(name = "regione") String regione,
-            @RequestParam(name = "citta") String citta) {
-        return new ResponseEntity<>(appartamentoService.getAppartamentoByRegioneAndCitta(regione, citta),
-                HttpStatus.OK);
+    @GetMapping("/{appID}")
+    public ResponseEntity<Appartamento> findbyid(@PathVariable Long appID) {
+        return new ResponseEntity<>(appartamentoService.findByID(appID), HttpStatus.OK);
     }
 
     @DeleteMapping("/delete/{appID}")

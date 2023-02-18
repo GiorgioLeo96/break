@@ -5,9 +5,11 @@ import java.util.List;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -21,6 +23,7 @@ import lombok.extern.slf4j.Slf4j;
 @RestController
 @RequestMapping("/api/utente")
 @Slf4j
+@CrossOrigin
 public class UtenteController {
 
     @Autowired
@@ -43,6 +46,17 @@ public class UtenteController {
         log.info("chiamata al findAllUtente");
         utenteService.deleteByID(uteID);
         return new ResponseEntity<>("Cancellato con successo", HttpStatus.OK);
+
+    }
+
+    @PostMapping("/create")
+    public ResponseEntity<Utente> createUtente(@RequestBody Utente utente) {
+
+        log.info("Chiamata create Utente" + utente.toString());
+
+        Utente a = utenteService.save(utente);
+
+        return new ResponseEntity<>(a, HttpStatus.CREATED);
 
     }
 

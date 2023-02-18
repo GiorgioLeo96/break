@@ -45,7 +45,11 @@ public class Prenotazione {
         this.checkOut = checkOut;
         this.utente = utente;
         this.appartamento = appartamento;
+    }
 
+    public Prenotazione(LocalDate checkIn, LocalDate checkOut) {
+        this.checkIn = checkIn;
+        this.checkOut = checkOut;
     }
 
 }

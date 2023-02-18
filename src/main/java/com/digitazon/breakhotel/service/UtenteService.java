@@ -45,8 +45,20 @@ public class UtenteService {
         oldUte.setNome(newUte.getNome());
         oldUte.setCognome(newUte.getCognome());
         oldUte.setEmail(newUte.getEmail());
+        oldUte.setNumeroCartaDiCredito(newUte.getNumeroCartaDiCredito());
 
         return utenteRepository.save(oldUte);
+    }
+
+    public Utente findByEmail(String email) {
+
+        Optional<Utente> uteOpt = utenteRepository.findByEmail(email);
+
+        if (uteOpt.isPresent())
+            return uteOpt.get();
+
+        return null;
+
     }
 
 }

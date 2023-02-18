@@ -25,7 +25,7 @@ public class BreakDataLoader implements CommandLineRunner {
     public void run(String... args) throws Exception {
         log.warn("Runner start");
 
-        Appartamento app1tmp = new Appartamento("Lombardia", "Milano", 2, 1, 2, 235, true, true, null);
+        Appartamento app1tmp = new Appartamento("Lombardia", "Milano", 1, 1, 2, 235, true, true, null);
         Appartamento app2tmp = new Appartamento("Veneto", "Venezia", 2, 1, 2, 120, false, true, null);
         Appartamento app3tmp = new Appartamento("Sicilia", "Palermo", 2, 1, 1, 130, true, false, null);
         Appartamento app4tmp = new Appartamento("Piemonte", "Torino", 2, 1, 1, 111, true, false, null);
@@ -33,13 +33,13 @@ public class BreakDataLoader implements CommandLineRunner {
         Appartamento app6tmp = new Appartamento("Abruzzo", "L'Acquila", 2, 1, 2, 293, true, true, null);
         Appartamento app7tmp = new Appartamento("Sardegna", "Cagliari", 2, 1, 1, 235, true, false, null);
         Appartamento app8tmp = new Appartamento("Toscana", "Firenze", 2, 1, 1, 156, false, true, null);
-        Appartamento app9tmp = new Appartamento("Emilia-Romania", "Bologna", 2, 1, 1, 130, true, true, null);
+        Appartamento app9tmp = new Appartamento("Emilia-Romagna", "Bologna", 2, 1, 1, 130, true, true, null);
         Appartamento app10tmp = new Appartamento("Umbria", "Perugia", 2, 1, 1, 321, true, false, null);
         Appartamento app11tmp = new Appartamento("Valle D'Aosta", "Aosta", 1, 2, 1, 255, false, true, null);
         Appartamento app12tmp = new Appartamento("Trentino-Alto Adige", "Trento", 4, 2, 2, 293, true, true, null);
         Appartamento app13tmp = new Appartamento("Marche", "Ancona", 2, 1, 1, 235, true, false, null);
         Appartamento app14tmp = new Appartamento("Molise", "Campobasso", 4, 1, 2, 120, false, true, null);
-        Appartamento app15tmp = new Appartamento("Emilia-Romania", "Bologna", 3, 2, 2, 130, true, true, null);
+        Appartamento app15tmp = new Appartamento("Friuli Venezia Giulia", "Udine", 3, 2, 2, 130, true, true, null);
         Appartamento app16tmp = new Appartamento("Liguria", "Genova", 1, 1, 1, 321, true, false, null);
         Appartamento app17tmp = new Appartamento("Valle D'Aosta", "Aosta", 1, 1, 1, 255, false, true, null);
         Appartamento app18tmp = new Appartamento("Campania", "Napoli", 1, 1, 1, 293, true, true, null);

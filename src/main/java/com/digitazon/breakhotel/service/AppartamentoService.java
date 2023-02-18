@@ -54,15 +54,15 @@ public class AppartamentoService {
         return appartamentoRepository.save(oldApp);
     }
 
-    public Appartamento getAppartamentoByRegione(String regione) {
-        return appartamentoRepository.findAppartamentoByRegione(regione);
+    public List<Appartamento> getAppartamentoByRegione(String regione) {
+        return appartamentoRepository.findAllByRegione(regione);
     }
 
-    public Appartamento getAppartamentoByCitta(String citta) {
-        return appartamentoRepository.findAppartamentoByCitta(citta);
+    public List<Appartamento> getAppartamentoByCitta(String citta) {
+        return appartamentoRepository.findAllByCitta(citta);
     }
 
-    public List<Appartamento> getAppartamentoByRegioneAndCitta(String citta, String regione) {
-        return appartamentoRepository.findAllByRegioneAndCitta(citta, regione);
+    public List<Appartamento> getAppartamentoByRegioneAndCitta(String regione, String citta) {
+        return appartamentoRepository.findAllByRegioneByCitta(regione, citta);
     }
 }

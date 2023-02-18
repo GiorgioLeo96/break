@@ -31,7 +31,7 @@ public class PrenotazioniTest {
     @Test
     public void pagamento() {
 
-        Utente ute1temp = new Utente("Edipio", "Rossi", "EdipioRossi@Hotmail.com");
+        Utente ute1temp = new Utente("Edipio", "Rossi", "EdipioRossi@Hotmail.com", "39839821");
 
         Utente ute1 = utenteService.save(ute1temp);
 
