@@ -1,7 +1,5 @@
 function Fondo() {
   const myStyle = {
-    height: "3px",
-    width: "100%",
     background: "rgb(191,249,255)",
     height: "3px",
     width: "100%",
@@ -14,7 +12,7 @@ function Fondo() {
         <div style={myStyle}></div>
         <div style={{ backgroundColor: "#171717", padding: "10px" }}>
           <div className="container text-white d-flex justify-content-between">
-            <div className="col-4">
+            <div className="col-4" style={{ marginTop: "16px" }}>
               <h5>Chi siamo?</h5>
               <p>Per qualunque informazione, richiesta contattare lo staff. </p>
               <p>
@@ -26,12 +24,16 @@ function Fondo() {
                 i nostri utenti.
               </p>
             </div>
-            <div className="col-4">
+            <div className="col-4" style={{ marginTop: "16px" }}>
               <h5>Contatti:</h5>
+              <p>Numero verde: 333 532 302918</p>
+              <p>
+                Gli orari per contattare il servizio clienti:
+                <br />
+                Dal Lunedi al Venerdi : 9:30 19:30. <br />
+                Sabato: 9:30 12:00.
+              </p>
               <p>Email : BnbGio.Appartamento@gmail.com</p>
-              <p>Gli orari per contattare il servizio clienti:</p>
-              <p>Dal Lunedi al Venerdi : 9:30 19:30.</p>
-              <p>Sabato: 9:30 12:00.</p>
             </div>
           </div>
         </div>

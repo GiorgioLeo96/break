@@ -321,7 +321,7 @@ public class BreakDataLoader implements CommandLineRunner {
 
         AppartamentoImg app19Img1 = new AppartamentoImg(app19, "immagini/casa19/esterno.jpg");
         AppartamentoImg app19Img2 = new AppartamentoImg(app19, "immagini/casa19/bagno.jpg");
-        AppartamentoImg app19Img3 = new AppartamentoImg(app19, "immagini/casa19/cucina2.jpg");
+        AppartamentoImg app19Img3 = new AppartamentoImg(app19, "immagini/casa19/salotto.jpg");
         AppartamentoImg app19Img4 = new AppartamentoImg(app19, "immagini/casa19/cucina.jpg");
         AppartamentoImg app19Img5 = new AppartamentoImg(app19, "immagini/casa19/letto.jpg");
 

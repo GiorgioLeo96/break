@@ -1,8 +1,10 @@
 import React, { useState } from "react";
-import { Link, useSearchParams } from "react-router-dom";
+import { useSearchParams } from "react-router-dom";
 import { Form, FormGroup, Label, Input } from "reactstrap";
+import { useNavigate } from "react-router-dom";
 
 function Prenota() {
+  const navigate = useNavigate();
   const [query, setQuery] = useSearchParams();
   const [nome, setNome] = useState("");
   const [cognome, setCognome] = useState("");
@@ -36,6 +38,7 @@ function Prenota() {
         setCognome("");
         setEmail("");
         setNumeroCartaDiCredito("");
+        navigate("/confermaordine");
       })
       .catch((errore) => {
         console.error("Errore durante la richiesta: ", errore);
@@ -88,19 +91,20 @@ function Prenota() {
             type="text"
             name="numeroCartaDiCredito"
             id="numeroCartaDiCredito"
-            placeholder="Inserisci il numero della carta"
+            placeholder="Inserisci il numero della carta di 14 cifre"
+            pattern="\d{14}"
             required
             onChange={(e) => setNumeroCartaDiCredito(e.target.value)}
           />
         </FormGroup>
-        <Label for="total">Total:</Label>
-        <div></div>
+
         <button
-          className="bg-dark text-white btn"
+          className="bg-dark text-white btn "
           color="dark text-white"
           type="submit"
+          style={{ marginTop: "30px" }}
         >
-          Paga ora
+          <b>Paga ora</b>
         </button>
       </Form>
     </div>

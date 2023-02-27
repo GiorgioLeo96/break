@@ -1,6 +1,7 @@
 package com.digitazon.breakhotel.controller;
 
 import java.time.LocalDate;
+import java.time.Period;
 import java.util.List;
 
 import org.springframework.beans.factory.annotation.Autowired;
@@ -47,7 +48,7 @@ public class PrenotazioneController {
         return new ResponseEntity<>(prenotazioneService.findAll(), HttpStatus.OK);
     }
 
-    @GetMapping("/prezzo{appartamentoId}")
+    @GetMapping("/prezzo/{appartamentoId}")
     public double getPrezzo(
             @RequestParam("checkin") String checkin,
             @RequestParam("checkout") String checkout,
@@ -58,6 +59,20 @@ public class PrenotazioneController {
 
         Prenotazione prenotazione = new Prenotazione(checkIn, checkOut);
         return prenotazione.getTotale();
+    }
+
+    @GetMapping("/occupata/{appartamentoId}")
+    public ResponseEntity<?> getOccupata(
+            @RequestParam("checkin") String checkin,
+            @RequestParam("checkout") String checkout,
+            @PathVariable Long appartamentoId) {
+
+        LocalDate checkIn = LocalDate.parse(checkin);
+        LocalDate checkOut = LocalDate.parse(checkout);
+
+        List<Prenotazione> prenotazioni = prenotazioneService.findAllByAppartamento(appartamentoId, checkIn, checkOut);
+        return new ResponseEntity<>(prenotazioni.size() > 0 ? true : false, HttpStatus.OK);
+
     }
 
     @GetMapping("id/{id}")
@@ -93,14 +108,20 @@ public class PrenotazioneController {
         Appartamento app = appartamentoService.findByID(prenotazione.getAppartamento().getId());
 
         if (app != null) {
+
+            Period period = Period.between(prenotazione.getCheckIn(), prenotazione.getCheckOut());
+            int totalDays = period.getDays();
+            Double totale = totalDays * app.getPrezzo();
+
             prenotazione.setAppartamento(app);
             prenotazione.setUtente(ut);
+            prenotazione.setTotale(totale);
             Prenotazione p = prenotazioneService.save(prenotazione);
 
             return new ResponseEntity<>(p, HttpStatus.CREATED);
         }
-        return new ResponseEntity<>("appartamento non trovato", HttpStatus.BAD_REQUEST);
 
+        return new ResponseEntity<>("appartamento non trovato", HttpStatus.BAD_REQUEST);
     }
 
 }

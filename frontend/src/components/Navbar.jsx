@@ -1,10 +1,11 @@
 import Logo from "../logo/Logo.png";
 import React, { useContext, useEffect } from "react";
-import { Link, useSearchParams } from "react-router-dom";
+import { useNavigate, useSearchParams } from "react-router-dom";
 import { useState } from "react";
 import { FetchAllContext } from "../App";
 
 function Navbar() {
+  const navigate = useNavigate();
   const [regione, setRegione] = useState("");
   const [citta, setCitta] = useState("");
   const [query, setQuery] = useSearchParams();
@@ -25,8 +26,6 @@ function Navbar() {
   };
 
   const myStyle = {
-    height: "3px",
-    width: "100%",
     background: "rgb(62,101,145)",
     height: "3px",
     width: "100%",
@@ -40,14 +39,26 @@ function Navbar() {
         className="navbar navbar-expand-lg"
         style={{ padding: "0px", backgroundColor: "#171717" }}
       >
-        <Link to={"/"}>
+        <button
+          style={{
+            padding: 0,
+            margin: 0,
+            marginLeft: 16,
+            border: "none",
+            backgroundColor: "#171717",
+          }}
+          onClick={() => {
+            navigate("/");
+            setFetchAll("http://localhost:8080/api/appartamento/all?");
+          }}
+        >
           <img
             className="d-flex justify-content-start"
             src={Logo}
             alt=""
             style={{ height: "70px", borderRadius: "16px", padding: "0px" }}
           />
-        </Link>
+        </button>
 
         <div className="d-flex justify-content-center w-100">
           <form
@@ -56,7 +67,10 @@ function Navbar() {
           >
             <input
               value={citta}
-              onChange={(e) => setCitta(e.target.value)}
+              onChange={(e) => {
+                setCitta(e.target.value);
+                setRegione("");
+              }}
               className="form-control mr-sm-2"
               type="search"
               placeholder="Cerca"
