@@ -34,7 +34,7 @@ const DettagliAppartamento = ({ dettagli }) => {
   }
 
   const handleStartDateChange = (date) => {
-    if (date > endDate) {
+    if (date >= endDate) {
       const nextDay = new Date(date);
       nextDay.setDate(nextDay.getDate() + 1);
       setEndDate(nextDay);
@@ -169,7 +169,6 @@ const DettagliAppartamento = ({ dettagli }) => {
                       className=""
                       style={{
                         textAlign: "center",
-                        marginRight: "10px",
                         padding: 0,
                         marginRight: "8px",
                       }}
